@@ -1,116 +1,74 @@
+<!-- Membuat Desain Scan Me -->
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Stand 6</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <style>
-        img {
-            border-radius: 10%;
-            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-            filter: grayscale(100%);
-        }
-    </style>
+    <title>Challenge 1 : Membuat desain "Scan Me"</title>
 </head>
 
 <body>
-    <div class="px-4 pt-5 text-center border-bottom">
-        <h1 class="display-4 fw-bold">SELAMAT DATANG DI STAND 6</h1>
-        <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Di stand 6, terdapat banyak snack yang anti mainstream dan unik-unik semua dan tentunya
-                tidak akan ditemukan di stand lain.
-                Menu snack disediakan dibawah beserta dengan harganya. Harga kaki lima, rasa bintang lima
-            </p>
-        </div>
-        <div class="overflow-hidden" style="max-height: 30vh;">
-        </div>
-    </div>
-
-
-    <div class="px-4 pt-5 text-center">
-        <u>
-            <h2> MAKANAN
-        </u> </h2>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" onclick="rotibakar()"> Roti Bakar - 3k / 4k <img src="images/rotibakar.jpg" alt="" height="75"> </li>
-            <li class="list-group-item" onclick="miphispicy()">MiPhiSpicy - 2,5k <img src="images/miekiller.webp" alt="" height="75"> </li>
-            <li class="list-group-item" onclick="aljabanana()">Aljabanana - 2,5k <img src="images/pisang.jpg" alt="" height="75"> </li>
-            <li class="list-group-item" onclick="cirengcostan()">Cirengcostan - 2,5k <img src="images/cireng.jpg" alt="" height="75"> </li>
-            <li class="list-group-item" onclick="phytofurambutan()">Phytofurambutan - 1k <img src="images/bolatofu.jpg" alt="" height="75"></li>
-            <li class="list-group-item" onclick="popcorn()">Popcorn - 4k <img src="images/popcorn.jpg" alt="" height="75"> </li>
-            <li class="list-group-item" onclick="piebrownies()">Pie Brownies - 3,5k <img src="images/pie.jpg" alt="" height="75"> </li>
-            <li class="list-group-item" onclick="esgabus()">Es Gabus - 3k <img src="images/esgabus.jpg" alt="" height="75"> </li>
-        </ul>
-    </div>
-
-
-    <div class="px-4 pt-5 text-center border-bottom">
-        <u>
-            <h2>MINUMAN
-        </u></h2>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" onclick="miloice()">Milo Ice - 5k <img src="images/icemilo.jpg" alt="" height="75"> </li>
-            <li class="list-group-item" onclick="mojitoice()">Mojito Ice - 5k <img src="images/mojitoice.jpg" alt="" height="75"> </li>
-            <li class="list-group-item" onclick="cucumbersativuscalculus()">Cucumber Sativus Calculus - 3k <img src="images/estimun.jpg" alt="" height="75"> </li>
-        </ul>
-    </div>
-
-    <div class="px-4 pt-5 text-center border-bottom">
-        <button>
-            <h2>
-                <a href="https://www.instagram.com/p/CgLq73hv1P-/?igshid=YmMyMTA2M2Y%3D">
-                    LINK GAMBAR MAKANAN
-                </a>
-            </h2>
-        </button>
-    </div>
-
+    <canvas id="ctx" width="600" height="600" style="border:1px solid #000"></canvas>
     <script>
-        function rotibakar() {
-            alert('Choco Cheese : 4k\nBlueberry : 3k\nChocolate : 3k\nCheese Milk : 4k')
+        var ctx = document.getElementById("ctx").getContext("2d");
+
+        ctx.font = '25px Arial';
+        ctx.fillStyle = 'gray';
+        // ctx.globalAlpha = 0.5;
+
+        // Scan Me
+        ctx.fillText("SCAN ME", 250, 35);
+
+        // Membuat kotak kiri atas
+        ctx.fillRect(50, 50, 100, 100); // Membuat kotak
+        ctx.clearRect(75, 75, 100, 100); // Menghilangkan kotak
+
+        // Membuat kotak kanan atas
+        ctx.fillRect(450, 50, 100, 100); // Membuat kotak
+        ctx.clearRect(425, 75, 100, 100); // Menghilangkan kotak
+
+        // Membuat kotak kiri bawah
+        ctx.fillRect(50, 450, 100, 100); // Membuat kotak
+        ctx.clearRect(75, 425, 100, 100); // Menghilangkan kotak
+
+        // Membuat kotak kanan bawah
+        ctx.fillRect(450, 450, 100, 100); // Membuat kotak
+        ctx.clearRect(425, 425, 100, 100); // Menghilangkan kotak
+
+        // Red
+        
+
+        // Modifikasi jadi karakter
+        var TNK = 100 // Titik Nol Karakter X
+        var TNK_Y = 200 // Titik Nol Karakter Y
+        var speedX = 105
+
+
+        function update(TNK, TNK_Y) {
+            ctx.fillRect(TNK, TNK_Y, 50, 100); // Badan
+            ctx.globalAlpha = 1;
+            ctx.fillRect(TNK - 25, TNK_Y + 35, 20, 65) // Tangan Kiri
+            ctx.fillRect(TNK + 55, TNK_Y + 35, 20, 65) // Tangan Kanan
+            ctx.fillRect(TNK, TNK_Y + 105, 20, 65) // Kaki Kiri
+            ctx.fillRect(TNK + 29, TNK_Y + 105, 20, 65) // Kaki Kanan
+            ctx.fillStyle = 'white';
+            ctx.globalAlpha = 0.5;
+            ctx.fillRect(TNK + 10, TNK_Y + 10, 30, 20) // Penutup Muka
+            ctx.fillStyle = 'red';
         }
 
-        function miloice() {
-            alert('Milo Ice : 5k')
-        }
-
-        function mojitoice() {
-            alert('Mojito Ice : 5k')
-        }
-
-        function piebrownies() {
-            alert('Pie Brownies : 3,5k')
-        }
-
-        function popcorn() {
-            alert('Popcorn : 4k')
-        }
-
-        function miphispicy() {
-            alert('Mie Killer : 2,5k')
-        }
-
-        function cucumbersativuscalculus() {
-            alert('Es Timun : 3k')
-        }
-
-        function esgabus() {
-            alert('Es Gabus : 3k')
-        }
-
-        function aljabanana() {
-            alert('Pisang Gebok Crispy : 2,5k')
-        }
-
-        function cirengcostan() {
-            alert('Cireng : 2,5k')
-        }
-
-        function phytofurambutan() {
-            alert('Bola Tofu Rambutan : 1k')
-        }
+        update(TNK, TNK_Y)
+        TNK += speedX
+        update(TNK, TNK_Y)
+        TNK += speedX
+        update(TNK, TNK_Y)
+        TNK += speedX
+        update(TNK, TNK_Y)
+        TNK += speedX
+        update(TNK, TNK_Y)
+        TNK += speedX
     </script>
 </body>
 
